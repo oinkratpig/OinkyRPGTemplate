@@ -7,6 +7,16 @@ using System.Collections.Generic;
 /// </summary>
 public partial class RPGMoveable : RPGGridNode2D
 {
+    public new Vector2 GlobalPosition
+    {
+        get { return base.GlobalPosition; }
+        set
+        {
+            base.GlobalPosition = value;
+            _desiredGlobalPosition = value;
+        }
+    }
+
     /// <summary>
     /// Possible directions the moveable can face
     /// </summary>
@@ -67,17 +77,17 @@ public partial class RPGMoveable : RPGGridNode2D
         // Move
         if(Moving)
         {
-            float distToDesiredPosition = GlobalPosition.DistanceTo(_desiredGlobalPosition);
+            float distToDesiredPosition = base.GlobalPosition.DistanceTo(_desiredGlobalPosition);
             // Stop moving
             if (distToDesiredPosition <= MoveSpeed) ArrivedAtDestination();
             // Moving
             else
             {
-                float faceAngle = GlobalPosition.AngleToPoint(_desiredGlobalPosition);
+                float faceAngle = base.GlobalPosition.AngleToPoint(_desiredGlobalPosition);
                 UpdateFacingDirection(faceAngle);
 
                 float distance = Mathf.Min(MoveSpeed, distToDesiredPosition);
-                GlobalPosition = GlobalPosition.LengthDir(distance, faceAngle);
+                base.GlobalPosition = base.GlobalPosition.LengthDir(distance, faceAngle);
             }
         }
 
@@ -144,17 +154,6 @@ public partial class RPGMoveable : RPGGridNode2D
         }
 
     } // end ArrivedAtDestination
-
-    /// <summary>
-    /// Sets global position and updates grid position accordingly.<br/>
-    /// Setting <paramref name="GlobalPosition"/> manually will result in strange behavior.
-    /// </summary>
-    public void SetGlobalPosition(Vector2 globalPosition)
-    {
-        GlobalPosition = Grid.SnapPosition(globalPosition);
-        _desiredGlobalPosition = GlobalPosition;
-
-    } // end SetPosition
 
     /// <summary>
     /// Move the <see cref="RPGMoveable"/> the specified distance.<br/>

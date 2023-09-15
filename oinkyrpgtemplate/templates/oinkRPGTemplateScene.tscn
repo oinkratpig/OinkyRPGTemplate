@@ -287,7 +287,6 @@ zoom = Vector2(2, 2)
 
 [node name="Player" type="Node2D" parent="." node_paths=PackedStringArray("_characterSprite", "_characterAnimationPlayer")]
 script = ExtResource("1_w1h1x")
-_movementMode = 1
 _characterSprite = NodePath("Sprite2D")
 _characterAnimationPlayer = NodePath("AnimationPlayer")
 

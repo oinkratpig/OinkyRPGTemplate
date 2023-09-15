@@ -13,7 +13,21 @@ public partial class RPGGridNode2D : Node2D
     public RPGGrid Grid { get; set; }
 
     /// <summary>
-    /// Grid position of the <see cref="RPGGridNode2D"/> instance.
+    /// Also updates <see cref="PositionGrid"/>.
+    /// </summary>
+    public new Vector2 GlobalPosition
+    {
+        get { return base.GlobalPosition; }
+        set
+        {
+            base.GlobalPosition = value;
+            _positionGrid = Grid.GlobalPositionToGrid(value);
+        }
+    }
+
+    /// <summary>
+    /// Grid position of the <see cref="RPGGridNode2D"/> instance.<br/>
+    /// Updates <see cref="GlobalPosition"/> and <see cref="GlobalPositionGrid"/>.
     /// </summary>
     /// <remarks>
     /// Grid position (0,0) would be the top-left tile of the grid.<br/>
@@ -21,8 +35,12 @@ public partial class RPGGridNode2D : Node2D
     /// </remarks>
     public Vector2I PositionGrid
     {
-        get { return Grid.GlobalPositionToGrid(GlobalPosition); }
+        get { return _positionGrid; }
+        set { GlobalPosition = Grid.GridPositionToGlobal(value); }
     }
+
+    // Fields
+    private Vector2I _positionGrid;
 
     /* Constructor */
     public RPGGridNode2D()
