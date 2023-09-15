@@ -13,6 +13,5 @@ The finished template will have basic features inherent to all RPG games.
 - Cutscenes
 - Combat
 - Party members
-- Inventory
-- Equipment
-- Stats
+- Inventory system
+- Equipment system
