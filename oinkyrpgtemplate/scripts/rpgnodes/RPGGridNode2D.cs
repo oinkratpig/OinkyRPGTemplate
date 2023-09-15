@@ -4,16 +4,16 @@ using System;
 /// <summary>
 /// A Node2D that is intended to move along the game's set grid.
 /// </summary>
-public partial class Node2DGrid : Node2D
+public partial class RPGGridNode2D : Node2D
 {
     /// <summary>
     /// Sets the <see cref="RPGGrid"/> instance used for grid positioning.<br/>
-    /// All <see cref="Node2DGrid"/> use the main grid (<see cref="OinkyRPG.MainGrid"/>) by default.
+    /// All <see cref="RPGGridNode2D"/> use the main grid (<see cref="OinkyRPG.MainGrid"/>) by default.
     /// </summary>
     public RPGGrid Grid { get; set; }
 
     /// <summary>
-    /// Grid position of the <see cref="Node2DGrid"/> instance.
+    /// Grid position of the <see cref="RPGGridNode2D"/> instance.
     /// </summary>
     /// <remarks>
     /// Grid position (0,0) would be the top-left tile of the grid.<br/>
@@ -25,7 +25,7 @@ public partial class Node2DGrid : Node2D
     }
 
     /* Constructor */
-    public Node2DGrid()
+    public RPGGridNode2D()
     {
         Grid = OinkyRPG.MainGrid;
 

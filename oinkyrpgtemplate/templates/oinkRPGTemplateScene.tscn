@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://c43o6b7ce7cm1"]
 
-[ext_resource type="Script" path="res://oinkyrpgtemplate/scripts/RPGPlayer.cs" id="1_5qvc2"]
+[ext_resource type="Script" path="res://oinkyrpgtemplate/scripts/rpgnodes/RPGPlayer.cs" id="1_w1h1x"]
 [ext_resource type="Texture2D" uid="uid://dkjvd0s8ms75c" path="res://oinkyrpgtemplate/placeholders/oinkRPGCharacterPlaceholder.png" id="1_xyu2o"]
 
 [sub_resource type="Animation" id="Animation_t4dlt"]
@@ -17,86 +17,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_k1rwb"]
-resource_name = "Idle_SouthEast"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-
-[sub_resource type="Animation" id="Animation_j5tdq"]
-resource_name = "Idle_South"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_007jl"]
-resource_name = "Idle_SouthWest"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-
-[sub_resource type="Animation" id="Animation_7blom"]
-resource_name = "Idle_West"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-
-[sub_resource type="Animation" id="Animation_2mfgs"]
-resource_name = "Idle_NorthWest"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
 }
 
 [sub_resource type="Animation" id="Animation_fcstt"]
@@ -131,8 +51,8 @@ tracks/0/keys = {
 "values": [5]
 }
 
-[sub_resource type="Animation" id="Animation_afq5y"]
-resource_name = "Walk_East"
+[sub_resource type="Animation" id="Animation_2mfgs"]
+resource_name = "Idle_NorthWest"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -144,27 +64,11 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [4]
 }
 
-[sub_resource type="Animation" id="Animation_6es75"]
-resource_name = "Walk_SouthEast"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-
-[sub_resource type="Animation" id="Animation_buvs3"]
-resource_name = "Walk_South"
+[sub_resource type="Animation" id="Animation_j5tdq"]
+resource_name = "Idle_South"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -179,8 +83,24 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_humjx"]
-resource_name = "Walk_SouthWest"
+[sub_resource type="Animation" id="Animation_k1rwb"]
+resource_name = "Idle_SouthEast"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_007jl"]
+resource_name = "Idle_SouthWest"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -193,6 +113,38 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_7blom"]
+resource_name = "Idle_West"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_afq5y"]
+resource_name = "Walk_East"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_2p6wr"]
@@ -243,6 +195,54 @@ tracks/0/keys = {
 "values": [4]
 }
 
+[sub_resource type="Animation" id="Animation_buvs3"]
+resource_name = "Walk_South"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6es75"]
+resource_name = "Walk_SouthEast"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_humjx"]
+resource_name = "Walk_SouthWest"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
 [sub_resource type="Animation" id="Animation_bg3kj"]
 resource_name = "Walk_West"
 length = 0.001
@@ -286,7 +286,7 @@ position = Vector2(581.1, 318.6)
 zoom = Vector2(2, 2)
 
 [node name="Player" type="Node2D" parent="." node_paths=PackedStringArray("_characterSprite", "_characterAnimationPlayer")]
-script = ExtResource("1_5qvc2")
+script = ExtResource("1_w1h1x")
 _movementMode = 1
 _characterSprite = NodePath("Sprite2D")
 _characterAnimationPlayer = NodePath("AnimationPlayer")
@@ -295,6 +295,7 @@ _characterAnimationPlayer = NodePath("AnimationPlayer")
 texture = ExtResource("1_xyu2o")
 hframes = 4
 vframes = 2
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 libraries = {

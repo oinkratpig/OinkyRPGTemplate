@@ -54,14 +54,7 @@ public partial class RPGPlayer : RPGCharacter
                 _movementSequence.Add(Vector2I.Up);
             if (Input.IsActionJustPressed("oinkyRPG_move_down"))
                 _movementSequence.Add(Vector2I.Down);
-        }
 
-        // DEBUG
-        if (Input.IsActionJustPressed("oinkyRPG_interact"))
-        {
-            MoveQueueAdd(new Vector2I(1, 0));
-            MoveQueueAdd(new Vector2I(1, 0));
-            MoveQueueAdd(new Vector2I(0, 1));
         }
 
     }
