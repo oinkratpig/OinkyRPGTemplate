@@ -99,7 +99,7 @@ public partial class RPGMoveable : RPGGridNode2D
     protected virtual void OnFacingDirectionChanged() { }
 
     /// <summary>
-    /// Update <paramref name="Facing"/> to face the given angle
+    /// Update <see cref="Facing"/> to face the given angle
     /// </summary>
     private void UpdateFacingDirection(float angle)
     {
