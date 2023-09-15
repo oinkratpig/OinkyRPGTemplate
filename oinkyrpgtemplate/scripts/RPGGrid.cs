@@ -48,8 +48,9 @@ public class RPGGrid
     /// </summary>
     public Vector2 SnapPosition(Vector2 globalPosition)
     {
-        return Offset + new Vector2(Mathf.Floor(globalPosition.X / TileSize.X),
-            Mathf.Floor(globalPosition.Y / TileSize.Y));
+        float x = Mathf.Round(globalPosition.X / TileSize.X) * TileSize.X;
+        float y = Mathf.Round(globalPosition.Y / TileSize.Y) * TileSize.Y;
+        return Offset + new Vector2(x, y);
 
     } // end SnapPosition
 

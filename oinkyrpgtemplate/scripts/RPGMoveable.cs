@@ -7,6 +7,10 @@ using System.Collections.Generic;
 /// </summary>
 public partial class RPGMoveable : Node2DGrid
 {
+    /// <summary>
+    /// Possible directions the moveable can face
+    /// </summary>
+    public enum Direction { East, SouthEast, South, SouthWest, West, NorthWest, North, NorthEast }
 
     /// <summary>
     /// Speed to move between tiles.
@@ -23,10 +27,27 @@ public partial class RPGMoveable : Node2DGrid
     /// </summary>
     public bool Moving { get; private set; }
 
+    /// <summary>
+    /// Angle in radians last moved towards.
+    /// </summary>
+    public Direction Facing {
+        get { return _facing; }
+        private set
+        {
+            if (_facing != value)
+            {
+                _facing = value;
+                OnFacingDirectionChanged();
+            }
+            _facing = value;
+        }
+    }
+
     // Fields
     private List<Vector2I> _movementQueue;
-    private float _moveSpeed = 3f;
+    private float _moveSpeed = 2f;
     private Vector2 _desiredGlobalPosition;
+    private Direction _facing;
 
     /* Constructor */
     public RPGMoveable()
@@ -52,13 +73,57 @@ public partial class RPGMoveable : Node2DGrid
             // Moving
             else
             {
-                float angle = GlobalPosition.AngleToPoint(_desiredGlobalPosition);
+                float faceAngle = GlobalPosition.AngleToPoint(_desiredGlobalPosition);
+                UpdateFacingDirection(faceAngle);
+
                 float distance = Mathf.Min(MoveSpeed, distToDesiredPosition);
-                GlobalPosition = GlobalPosition.LengthDir(distance, angle);
+                GlobalPosition = GlobalPosition.LengthDir(distance, faceAngle);
             }
         }
 
     } // end _PhysicsProcess
+
+    /// <summary>
+    /// Called when movement starts.
+    /// </summary>
+    protected virtual void OnBeginMoving() { }
+
+    /// <summary>
+    /// Called when movement ends.
+    /// </summary>
+    protected virtual void OnStopMoving() { }
+
+    /// <summary>
+    /// Called when the direction faced is changed.
+    /// </summary>
+    protected virtual void OnFacingDirectionChanged() { }
+
+    /// <summary>
+    /// Update <paramref name="Facing"/> to face the given angle
+    /// </summary>
+    private void UpdateFacingDirection(float angle)
+    {
+        float angleDegrees = Mathf.Round(Mathf.RadToDeg(angle));
+
+        // Keep angle between [0, 360]
+        while (angleDegrees > 360f) angleDegrees -= 360f;
+        while (angleDegrees < 0f) angleDegrees += 360f;
+
+        // Determine facing direction
+        Direction[] directionOrder = new Direction[]
+        {
+            Direction.East, Direction.SouthEast, Direction.South,
+            Direction.SouthWest, Direction.West, Direction.NorthWest,
+            Direction.North, Direction.NorthEast, Direction.East
+        };
+        for(int i = 0; i < directionOrder.Length; i++)
+            if (angleDegrees < (i + 1) * 45f)
+            {
+                Facing = directionOrder[i];
+                break;
+            }
+
+    } // end UpdateFacingDirection
 
     /// <summary>
     /// Called when movement is stopped.
@@ -69,12 +134,42 @@ public partial class RPGMoveable : Node2DGrid
 
         if (_movementQueue.Count > 0)
         {
-            _desiredGlobalPosition += Grid.TileSize * _movementQueue[0];
+            Move(_movementQueue[0], false);
             _movementQueue.RemoveAt(0);
         }
-        else Moving = false;
+        else
+        {
+            Moving = false;
+            OnStopMoving();
+        }
 
     } // end ArrivedAtDestination
+
+    /// <summary>
+    /// Sets global position and updates grid position accordingly.<br/>
+    /// Setting <paramref name="GlobalPosition"/> manually will result in strange behavior.
+    /// </summary>
+    public void SetGlobalPosition(Vector2 globalPosition)
+    {
+        GlobalPosition = Grid.SnapPosition(globalPosition);
+        _desiredGlobalPosition = GlobalPosition;
+
+    } // end SetPosition
+
+    /// <summary>
+    /// Move the <see cref="RPGMoveable"/> the specified distance.<br/>
+    /// </summary>
+    /// <param name="ignoreIfMoving">If true, nothing will happen if the <see cref="RPGMoveable"/> is moving.</param>
+    public void Move(Vector2I distance, bool ignoreIfMoving)
+    {
+        if ((!Moving || !ignoreIfMoving) && distance != Vector2I.Zero)
+        {
+            Moving = true;
+            _desiredGlobalPosition += Grid.TileSize * distance;
+            OnBeginMoving();
+        }
+
+    } // end Move
 
     /// <summary>
     /// Move the <see cref="RPGMoveable"/> the specified distance.<br/>
@@ -82,11 +177,7 @@ public partial class RPGMoveable : Node2DGrid
     /// </summary>
     public void Move(Vector2I distance)
     {
-        if (!Moving && distance != Vector2I.Zero)
-        {
-            Moving = true;
-            _desiredGlobalPosition += Grid.TileSize * distance;
-        }
+        Move(distance, true);
 
     } // end Move
 

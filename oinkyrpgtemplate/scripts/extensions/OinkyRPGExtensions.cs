@@ -8,16 +8,6 @@ using System.Threading.Tasks;
 
 public static class OinkyRPGExtensions
 {
-
-    /// <summary>
-    /// Same as using CallDeferred to add a child.
-    /// </summary>
-    public static void AddChildDeferred(this Node obj, Node child)
-    {
-        obj.CallDeferred("add_child", child);
-
-    } // end AddChildDeferred
-
     /*
     /// <summary>
     /// Returns a new Vector2 with values more than or equal to the given value.
@@ -39,6 +29,24 @@ public static class OinkyRPGExtensions
 
     } // end Max
     */
+
+    /// <summary>
+    /// Same as using CallDeferred to add a child.
+    /// </summary>
+    public static void AddChildDeferred(this Node obj, Node child)
+    {
+        obj.CallDeferred("add_child", child);
+
+    } // end AddChildDeferred
+
+    /// <summary>
+    /// Returns angle in radians from the <see cref="Vector2I"/> to the specified position.
+    /// </summary>
+    public static float AngleTo(this Vector2I from, Vector2I to)
+    {
+        return ((Vector2)from).AngleTo(to);
+
+    } // end AngleTo
 
     /// <summary>
     /// Returns a new Vector2 moved by length in given direction.
