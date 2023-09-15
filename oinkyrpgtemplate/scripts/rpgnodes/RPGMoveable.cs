@@ -7,16 +7,6 @@ using System.Collections.Generic;
 /// </summary>
 public partial class RPGMoveable : RPGGridNode2D
 {
-    public new Vector2 GlobalPosition
-    {
-        get { return base.GlobalPosition; }
-        set
-        {
-            base.GlobalPosition = value;
-            _desiredGlobalPosition = value;
-        }
-    }
-
     /// <summary>
     /// Possible directions the moveable can face
     /// </summary>
@@ -30,6 +20,19 @@ public partial class RPGMoveable : RPGGridNode2D
     {
         get { return _moveSpeed; }
         set { _moveSpeed = value; }
+    }
+
+    /// <summary>
+    /// Updates "fake" position when modified.
+    /// </summary>
+    public new Vector2 GlobalPosition
+    {
+        get { return base.GlobalPosition; }
+        set
+        {
+            base.GlobalPosition = value;
+            _desiredGlobalPosition = value;
+        }
     }
 
     /// <summary>
