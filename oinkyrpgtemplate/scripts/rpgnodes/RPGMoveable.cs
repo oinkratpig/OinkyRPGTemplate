@@ -5,7 +5,7 @@ using System.Collections.Generic;
 /// <summary>
 /// The controllable player within the RPG.
 /// </summary>
-public partial class RPGMoveable : RPGGridNode2D
+public partial class RPGMoveable : RPGNode
 {
     /// <summary>
     /// Possible directions the moveable can face

@@ -8,28 +8,6 @@ using System.Threading.Tasks;
 
 public static class OinkyRPGExtensions
 {
-    /*
-    /// <summary>
-    /// Returns a new Vector2 with values more than or equal to the given value.
-    /// </summary>
-    public static Vector2I Min(this Vector2I vector, int value)
-    {
-        return new Vector2I(Math.Min(vector.X, value),
-            Math.Min(vector.Y, value));
-
-    } // end Min
-
-    /// <summary>
-    /// Returns a new Vector2 with values less than or equal to the given value.
-    /// </summary>
-    public static Vector2I Max(this Vector2I vector, int value)
-    {
-        return new Vector2I(Math.Max(vector.X, value),
-            Math.Max(vector.Y, value));
-
-    } // end Max
-    */
-
     /// <summary>
     /// Same as using CallDeferred to add a child.
     /// </summary>

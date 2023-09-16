@@ -2,10 +2,10 @@ using Godot;
 using System;
 
 /// <summary>
-/// A Node2D that is intended to move along the game's set grid.
+/// A Node that is intended to move along the game's set grid.
 /// </summary>
 [Tool]
-public partial class RPGGridNode2D : Node2D
+public partial class RPGNode : Node
 {
     /// <summary>
     /// Sets the <see cref="RPGGrid"/> instance used for grid positioning.<br/>
@@ -16,13 +16,18 @@ public partial class RPGGridNode2D : Node2D
     /// <summary>
     /// Also updates <see cref="PositionGrid"/>.
     /// </summary>
-    public new Vector2 GlobalPosition
+    [Export] public Vector2 GlobalPosition
     {
-        get { return base.GlobalPosition; }
+        get { return _globalPosition; }
         set
         {
-            base.GlobalPosition = value;
+            _globalPosition = value;
             _positionGrid = Grid.GlobalPositionToGrid(value);
+
+            // Update global position of all children
+            foreach (Node node in GetChildren())
+                if (node is Node2D && IsInstanceValid(node))
+                    (node as Node2D).GlobalPosition = GlobalPosition;
         }
     }
 
@@ -42,12 +47,13 @@ public partial class RPGGridNode2D : Node2D
 
     // Fields
     private Vector2I _positionGrid;
+    private Vector2 _globalPosition;
 
     /* Constructor */
-    public RPGGridNode2D()
+    public RPGNode()
     {
         Grid = OinkyRPG.MainGrid;
 
     } // end constructor
 
-} // end class Node2DGrid
+} // end class RPGNode

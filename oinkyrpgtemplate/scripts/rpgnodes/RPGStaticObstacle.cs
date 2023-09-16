@@ -5,7 +5,7 @@ using System.ComponentModel.Design;
 /// <summary>
 /// A static obstacle that cannot be moved into.
 /// </summary>
-public partial class RPGStaticObstacle : RPGGridNode2D
+public partial class RPGStaticObstacle : RPGNode
 {
 
 
