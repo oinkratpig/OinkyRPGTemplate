@@ -78,8 +78,11 @@ public partial class RPGMoveable : RPGNode
 
     public override void _PhysicsProcess(double delta)
     {
+        if (Engine.IsEditorHint())
+            return;
+
         // Move
-        if(Moving)
+        if (Moving)
         {
             float distToDesiredPosition = base.GlobalPosition.DistanceTo(_desiredGlobalPosition);
             // Stop moving

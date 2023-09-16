@@ -62,6 +62,9 @@ public partial class RPGPlayer : RPGCharacter
 
     public override void _PhysicsProcess(double delta)
     {
+        if (Engine.IsEditorHint())
+            return;
+
         base._PhysicsProcess(delta);
 
         // FourWaySequence movement

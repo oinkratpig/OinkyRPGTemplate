@@ -289,7 +289,6 @@ zoom = Vector2(2, 2)
 script = ExtResource("1_w1h1x")
 
 [node name="Sprite2D" type="Sprite2D" parent="RPGPlayer"]
-position = Vector2(384, 224)
 texture = ExtResource("1_xyu2o")
 hframes = 4
 vframes = 2
