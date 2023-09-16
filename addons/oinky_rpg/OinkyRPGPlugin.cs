@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 
 [Tool]
-public partial class OinkyRPGCustomNodes : EditorPlugin
+public partial class OinkyRPGPlugin: EditorPlugin
 {
     /// <summary>
     /// Stores data for custom nodes.
@@ -36,7 +36,7 @@ public partial class OinkyRPGCustomNodes : EditorPlugin
     private List<CustomNodeData> _customNodes;
 
     /* Constructor */
-    public OinkyRPGCustomNodes()
+    public OinkyRPGPlugin()
     {
         _customNodes = new List<CustomNodeData>();
 
@@ -69,5 +69,5 @@ public partial class OinkyRPGCustomNodes : EditorPlugin
         
     } // end _ExitTree
 
-} // end class OinkyRPGCustomNodes
+} // end class OinkyRPGPlugin
 #endif

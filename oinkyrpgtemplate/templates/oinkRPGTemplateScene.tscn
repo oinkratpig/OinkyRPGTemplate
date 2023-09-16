@@ -285,10 +285,8 @@ _data = {
 position = Vector2(581.1, 318.6)
 zoom = Vector2(2, 2)
 
-[node name="RPGPlayer" type="Node" parent="." node_paths=PackedStringArray("_characterSprite")]
+[node name="RPGPlayer" type="Node" parent="."]
 script = ExtResource("1_w1h1x")
-_characterSprite = NodePath("Sprite2D")
-PositionGrid = Vector2i(12, 7)
 
 [node name="Sprite2D" type="Sprite2D" parent="RPGPlayer"]
 position = Vector2(384, 224)
