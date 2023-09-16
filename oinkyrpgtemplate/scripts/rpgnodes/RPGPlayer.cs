@@ -27,9 +27,7 @@ public partial class RPGPlayer : RPGCharacter
     {
         base._Ready();
 
-        // Center in viewport
-        GlobalPosition = Grid.SnapPosition(GetViewport().GetVisibleRect().Size / 2f);
-    }
+    } // end _Ready
 
     public override void _UnhandledInput(InputEvent @event)
     {

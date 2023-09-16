@@ -282,7 +282,6 @@ _data = {
 [node name="TemplateScene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(581.1, 318.6)
 zoom = Vector2(2, 2)
 
 [node name="RPGPlayer" type="Node" parent="."]
