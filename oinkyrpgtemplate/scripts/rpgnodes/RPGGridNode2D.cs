@@ -4,6 +4,7 @@ using System;
 /// <summary>
 /// A Node2D that is intended to move along the game's set grid.
 /// </summary>
+[Tool]
 public partial class RPGGridNode2D : Node2D
 {
     /// <summary>
