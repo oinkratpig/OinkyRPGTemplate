@@ -5,6 +5,7 @@ using System.Collections.Generic;
 /// <summary>
 /// The controllable player within the RPG.
 /// </summary>
+[Tool]
 public partial class RPGMoveable : RPGNode
 {
     /// <summary>

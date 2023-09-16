@@ -16,7 +16,7 @@ public partial class RPGNode : Node
     /// <summary>
     /// Also updates <see cref="PositionGrid"/>.
     /// </summary>
-    [Export] public Vector2 GlobalPosition
+    public Vector2 GlobalPosition
     {
         get { return _globalPosition; }
         set
@@ -39,7 +39,7 @@ public partial class RPGNode : Node
     /// Grid position (0,0) would be the top-left tile of the grid.<br/>
     /// Grid position (1,1) is one tile to the right and one tile down.
     /// </remarks>
-    public Vector2I PositionGrid
+    [Export] public Vector2I PositionGrid
     {
         get { return _positionGrid; }
         set { GlobalPosition = Grid.GridPositionToGlobal(value); }

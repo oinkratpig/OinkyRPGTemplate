@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bclnj0lpl6ssj"
-path="res://.godot/imported/icon_player.png-cb23e55b0e35db266d78e5bac7167c80.ctex"
+uid="uid://canr6lr45k7o2"
+path="res://.godot/imported/icon_character.png-fba1d5522d43ab62fb2a956e9661890b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://oinkyrpgtemplate/icons/icon_player.png"
-dest_files=["res://.godot/imported/icon_player.png-cb23e55b0e35db266d78e5bac7167c80.ctex"]
+source_file="res://oinkyrpgtemplate/icons/icon_character.png"
+dest_files=["res://.godot/imported/icon_character.png-fba1d5522d43ab62fb2a956e9661890b.ctex"]
 
 [params]
 

@@ -6,6 +6,7 @@ using System.ComponentModel.Design;
 /// A character within the RPG.<br/>
 /// Sprite MUST use the 8-directional format used by the template.
 /// </summary>
+[Tool]
 public partial class RPGCharacter : RPGMoveable
 {
     [ExportGroup("Components")]
@@ -34,41 +35,42 @@ public partial class RPGCharacter : RPGMoveable
     protected override void OnFacingDirectionChanged()
     {
         // Face correct direction
-        switch(Facing)
-        {
-            case Direction.East:
-                if (Moving) _characterAnimationPlayer.Play(_animNameWalkEast);
-                else _characterAnimationPlayer.Play(_animNameIdleEast);
-                break;
-            case Direction.SouthEast:
-                if (Moving) _characterAnimationPlayer.Play(_animNameWalkSouthEast);
-                else _characterAnimationPlayer.Play(_animNameIdleSouthEast);
-                break;
-            case Direction.South:
-                if (Moving) _characterAnimationPlayer.Play(_animNameWalkSouth);
-                else _characterAnimationPlayer.Play(_animNameIdleSouth);
-                break;
-            case Direction.SouthWest:
-                if (Moving) _characterAnimationPlayer.Play(_animNameWalkSouthWest);
-                else _characterAnimationPlayer.Play(_animNameIdleSouthWest);
-                break;
-            case Direction.West:
-                if (Moving) _characterAnimationPlayer.Play(_animNameWalkWest);
-                else _characterAnimationPlayer.Play(_animNameIdleWest);
-                break;
-            case Direction.NorthWest:
-                if (Moving) _characterAnimationPlayer.Play(_animNameWalkNorthWest);
-                else _characterAnimationPlayer.Play(_animNameIdleNorthWest);
-                break;
-            case Direction.North:
-                if (Moving) _characterAnimationPlayer.Play(_animNameWalkNorth);
-                else _characterAnimationPlayer.Play(_animNameIdleNorth);
-                break;
-            case Direction.NorthEast:
-                if (Moving) _characterAnimationPlayer.Play(_animNameWalkNorthEast);
-                else _characterAnimationPlayer.Play(_animNameIdleNorthEast);
-                break;
-        }
+        if(IsInstanceValid(_characterAnimationPlayer))
+            switch(Facing)
+            {
+                case Direction.East:
+                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkEast);
+                    else _characterAnimationPlayer.Play(_animNameIdleEast);
+                    break;
+                case Direction.SouthEast:
+                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkSouthEast);
+                    else _characterAnimationPlayer.Play(_animNameIdleSouthEast);
+                    break;
+                case Direction.South:
+                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkSouth);
+                    else _characterAnimationPlayer.Play(_animNameIdleSouth);
+                    break;
+                case Direction.SouthWest:
+                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkSouthWest);
+                    else _characterAnimationPlayer.Play(_animNameIdleSouthWest);
+                    break;
+                case Direction.West:
+                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkWest);
+                    else _characterAnimationPlayer.Play(_animNameIdleWest);
+                    break;
+                case Direction.NorthWest:
+                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkNorthWest);
+                    else _characterAnimationPlayer.Play(_animNameIdleNorthWest);
+                    break;
+                case Direction.North:
+                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkNorth);
+                    else _characterAnimationPlayer.Play(_animNameIdleNorth);
+                    break;
+                case Direction.NorthEast:
+                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkNorthEast);
+                    else _characterAnimationPlayer.Play(_animNameIdleNorthEast);
+                    break;
+            }
 
     } // end _PhsyicsProcess
 

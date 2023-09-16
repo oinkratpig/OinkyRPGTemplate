@@ -6,6 +6,7 @@ using System.Linq;
 /// <summary>
 /// The controllable player within the RPG.
 /// </summary>
+[Tool]
 public partial class RPGPlayer : RPGCharacter
 {
     private enum MovementMode { Diagonal, FourWaySequence, FourWayClockwise, FourWayCounterClockwise }

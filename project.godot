@@ -21,7 +21,7 @@ project/assembly_name="Oinky RPGTemplate"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/oinkyrpg/plugin.cfg")
+enabled=PackedStringArray("res://addons/oinky_rpg/plugin.cfg")
 
 [input]
 

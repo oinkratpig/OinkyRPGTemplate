@@ -14,7 +14,7 @@ public static class OinkyRPG
 
     // Paths
     public const string PATH_CUSTOM_NODE_ICONS = "res://oinkyrpgtemplate/icons/";
-    public const string PATH_SCRIPTS = "res://oinkyrpgtemplate/scripts/rpgnodes/";
+    public const string PATH_SCRIPTS = "res://oinkyrpgtemplate/scripts/";
 
     public static RPGGrid MainGrid { get; private set; }
 
