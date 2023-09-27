@@ -21,13 +21,14 @@ public partial class RPGNode : Node
         get { return _globalPosition; }
         set
         {
+            Vector2 globalPositionChange = value - GlobalPosition;
             _globalPosition = value;
             _positionGrid = Grid.GlobalPositionToGrid(value);
 
-            // Update global position of all children
+            // Update global position of all Node2D children, such as Sprite2Ds
             foreach (Node node in GetChildren())
                 if (node is Node2D && IsInstanceValid(node))
-                    (node as Node2D).GlobalPosition = GlobalPosition;
+                    (node as Node2D).GlobalPosition += globalPositionChange;
         }
     }
 
