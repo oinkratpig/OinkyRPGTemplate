@@ -25,10 +25,17 @@ public partial class RPGNode : Node
             _globalPosition = value;
             _positionGrid = Grid.GlobalPositionToGrid(value);
 
-            // Update global position of all Node2D children, such as Sprite2Ds
+            // Update global position of children
             foreach (Node node in GetChildren())
+            {
+                // 2D Nodes
                 if (node is Node2D && IsInstanceValid(node))
                     (node as Node2D).GlobalPosition += globalPositionChange;
+                // RPG Nodes
+                else if (node is RPGNode)
+                    if ((node as RPGNode).Static == false)
+                        (node as RPGNode).GlobalPosition += globalPositionChange;
+            }
         }
     }
 
@@ -45,6 +52,13 @@ public partial class RPGNode : Node
         get { return _positionGrid; }
         set { GlobalPosition = Grid.GridPositionToGlobal(value); }
     }
+
+    /// <summary>
+    /// Whether or not the position is relative to the parent.<br/>
+    /// 'true' ignores all <see cref="RPGNode"/> parents' positions. Its position in the grid will always be global.<br/>
+    /// 'false' changes its position whenever any parents' position changes.
+    /// </summary>
+    [Export] public bool Static { get; set; }
 
     // Fields
     private Vector2I _positionGrid;
