@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Oinky RPG Template"
-run/main_scene="res://oinkyrpgtemplate/templates/oinkRPGTemplateScene.tscn"
+run/main_scene="res://oinkyrpgtemplate/examples/rpg_example_scene.tscn"
 config/features=PackedStringArray("4.1", "C#", "GL Compatibility")
 config/icon="res://icon.png"
 

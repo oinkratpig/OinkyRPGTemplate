@@ -35,43 +35,53 @@ public partial class RPGCharacter : RPGMoveable
     protected override void OnFacingDirectionChanged()
     {
         // Face correct direction
-        if(IsInstanceValid(_characterAnimationPlayer))
+        if (IsInstanceValid(_characterAnimationPlayer))
             switch(Facing)
             {
                 case Direction.East:
-                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkEast);
-                    else _characterAnimationPlayer.Play(_animNameIdleEast);
+                    if (Moving) PlayAnimationIfExists(_animNameWalkEast);
+                    else PlayAnimationIfExists(_animNameIdleEast);
                     break;
                 case Direction.SouthEast:
-                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkSouthEast);
-                    else _characterAnimationPlayer.Play(_animNameIdleSouthEast);
+                    if (Moving) PlayAnimationIfExists(_animNameWalkSouthEast);
+                    else PlayAnimationIfExists(_animNameIdleSouthEast);
                     break;
                 case Direction.South:
-                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkSouth);
-                    else _characterAnimationPlayer.Play(_animNameIdleSouth);
+                    if (Moving) PlayAnimationIfExists(_animNameWalkSouth);
+                    else PlayAnimationIfExists(_animNameIdleSouth);
                     break;
                 case Direction.SouthWest:
-                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkSouthWest);
-                    else _characterAnimationPlayer.Play(_animNameIdleSouthWest);
+                    if (Moving) PlayAnimationIfExists(_animNameWalkSouthWest);
+                    else PlayAnimationIfExists(_animNameIdleSouthWest);
                     break;
                 case Direction.West:
-                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkWest);
-                    else _characterAnimationPlayer.Play(_animNameIdleWest);
+                    if (Moving) PlayAnimationIfExists(_animNameWalkWest);
+                    else PlayAnimationIfExists(_animNameIdleWest);
                     break;
                 case Direction.NorthWest:
-                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkNorthWest);
-                    else _characterAnimationPlayer.Play(_animNameIdleNorthWest);
+                    if (Moving) PlayAnimationIfExists(_animNameWalkNorthWest);
+                    else PlayAnimationIfExists(_animNameIdleNorthWest);
                     break;
                 case Direction.North:
-                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkNorth);
-                    else _characterAnimationPlayer.Play(_animNameIdleNorth);
+                    if (Moving) PlayAnimationIfExists(_animNameWalkNorth);
+                    else PlayAnimationIfExists(_animNameIdleNorth);
                     break;
                 case Direction.NorthEast:
-                    if (Moving) _characterAnimationPlayer.Play(_animNameWalkNorthEast);
-                    else _characterAnimationPlayer.Play(_animNameIdleNorthEast);
+                    if (Moving) PlayAnimationIfExists(_animNameWalkNorthEast);
+                    else PlayAnimationIfExists(_animNameIdleNorthEast);
                     break;
             }
 
     } // end _PhsyicsProcess
+
+    /// <summary>
+    /// Play the given animation in the animation player if it exists.
+    /// </summary>
+    private void PlayAnimationIfExists(string animName)
+    {
+        if (_characterAnimationPlayer.HasAnimation(animName))
+            _characterAnimationPlayer.Play(animName);
+
+    } // end PlayAnimationIfExists
 
 } // end class RPGCharacter

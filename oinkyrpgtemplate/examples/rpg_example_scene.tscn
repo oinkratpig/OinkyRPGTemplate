@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c43o6b7ce7cm1"]
+
+[ext_resource type="PackedScene" uid="uid://daj6lfr7k12x2" path="res://oinkyrpgtemplate/examples/rpg_example_player.tscn" id="1_vlb5h"]
+
+[node name="TemplateScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="RPGPlayerExample" parent="." instance=ExtResource("1_vlb5h")]
